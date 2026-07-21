@@ -7,8 +7,10 @@ import { useEffect, useMemo, useState } from "react";
 const generateMockItems = () => {
   const items = [];
 
-  for (let catIndex = 0; catIndex < 6; catIndex++) {
-    for (let subIndex = 0; subIndex < 4; subIndex++) {
+  // Precisa bater exatamente com o CategoryData.kt do bot:
+  // 25 categorias, 6 subcategorias por categoria, 5 pacotes por subcategoria.
+  for (let catIndex = 0; catIndex < 25; catIndex++) {
+    for (let subIndex = 0; subIndex < 6; subIndex++) {
       for (let pacIndex = 0; pacIndex < 5; pacIndex++) {
         const catId = `cat_${catIndex}`;
         const subId = `sub_${catIndex}_${subIndex}`;
@@ -101,7 +103,10 @@ function App() {
         {/* 🧱 GRID */}
         <div className="p-3 grid grid-cols-2 gap-3">
           {filtered.map((item) => (
-            <div key={item.id} className="bg-zinc-900 rounded-lg overflow-hidden">
+            <div
+              key={item.id}
+              className="bg-zinc-900 rounded-lg overflow-hidden"
+            >
               <img
                 src={item.image}
                 alt={item.title}
